@@ -93,12 +93,12 @@ def double_number():
 #https://www.google.com/maps/search/?api=1&parameters
 
 #my code was working and displaying everything on the same page, but now my view function is not returning a response
-@app.route('/problem4form', methods = ['GET'])
+@app.route('/problem4form', methods = ["GET", "POST"])
 def problem_4():
 	x = """<!DOCTYPE html>
 <html>
 <body>
-<form action ="/problem4form" method = "GET">
+<form action ="/problem4form" method = "POST">
   <h2>Hello There!</h2>
   Please enter your name<br>
   <input type="text" name="name">
@@ -107,7 +107,7 @@ def problem_4():
 </body>
 </html>
 <br>
-<form action="/problem4form" method="GET">
+<form action="/problem4form" method="POST">
 	Where should you travel to next? Pick 1 city.<br>
   <input type="checkbox" name="city1" value="detroit"> City 1 <br>
   <input type="checkbox" name="city2" value="chicago"> City 2 <br>
@@ -121,7 +121,7 @@ def problem_4():
 
 # @app.route('/results', methods = ['GET', 'POST'])
 # def results():
-	if request.method == "GET":
+	if request.method == "POST":
 		for city in request.args:
 			if city == 'city1':
 				return x + '<h1>Welcome to Detroit!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=detroit">'
@@ -135,23 +135,6 @@ def problem_4():
 				return x + '<h1>Welcome to Seattle!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=seattle">'
 			elif city == 'city6':
 				return x + '<h1>Welcome to Austin!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=austin">'
-
-	
-# @app.route('/questions', methods = ['GET','POST'])
-# def problem_4_questions():
-# 	return """ <form action="http://localhost:5000/results" method='GET'>
-# 	Where should you travel to next? Pick 1 city.<br>
-#   <input type="checkbox" name="city1" value="detroit"> City 1 <br>
-#   <input type="checkbox" name="city2" value="chicago"> City 2 <br>
-#   <input type="checkbox" name="city3" value="san francisco"> City 3 <br>
-#   <input type="checkbox" name="city4" value="new york"> City 4 <br>
-#   <input type="checkbox" name="city5" value="seattle"> City 5 <br>
-#   <input type="checkbox" name="city6" value="austin"> City 6 <br>
-#   <input type="submit" value="Submit">
-# </form>"""
-
-# @app.route('/problem4form', methods = ['GET'])
-# def problem_4_results():
     
 
 
