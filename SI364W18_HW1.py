@@ -6,7 +6,7 @@
 
 ## List below here, in a comment/comments, the people you worked with on this assignment AND any resources you used to find code (50 point deduction for not doing so). If none, write "None".
 #Kyle E.
-
+# https://developers.google.com/maps/documentation/static-maps/intro
 
 ## [PROBLEM 1] - 150 points
 ## Below is code for one of the simplest possible Flask applications. Edit the code so that once you run this application locally and go to the URL 'http://localhost:5000/class', you see a page that says "Welcome to SI 364!"
@@ -92,7 +92,8 @@ def double_number():
 
 #https://www.google.com/maps/search/?api=1&parameters
 
-@app.route('/problem4form', methods = ['GET', 'POST'])
+#my code was working and displaying everything on the same page, but now my view function is not returning a response
+@app.route('/problem4form', methods = ['GET'])
 def problem_4():
 	x = """<!DOCTYPE html>
 <html>
@@ -116,7 +117,10 @@ def problem_4():
   <input type="checkbox" name="city6" value="austin"> City 6 <br>
   <input type="submit" value="Submit">
 </form>"""
+	# return x
 
+# @app.route('/results', methods = ['GET', 'POST'])
+# def results():
 	if request.method == "GET":
 		for city in request.args:
 			if city == 'city1':
@@ -131,7 +135,26 @@ def problem_4():
 				return x + '<h1>Welcome to Seattle!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=seattle">'
 			elif city == 'city6':
 				return x + '<h1>Welcome to Austin!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=austin">'
+
 	
+# @app.route('/questions', methods = ['GET','POST'])
+# def problem_4_questions():
+# 	return """ <form action="http://localhost:5000/results" method='GET'>
+# 	Where should you travel to next? Pick 1 city.<br>
+#   <input type="checkbox" name="city1" value="detroit"> City 1 <br>
+#   <input type="checkbox" name="city2" value="chicago"> City 2 <br>
+#   <input type="checkbox" name="city3" value="san francisco"> City 3 <br>
+#   <input type="checkbox" name="city4" value="new york"> City 4 <br>
+#   <input type="checkbox" name="city5" value="seattle"> City 5 <br>
+#   <input type="checkbox" name="city6" value="austin"> City 6 <br>
+#   <input type="submit" value="Submit">
+# </form>"""
+
+# @app.route('/problem4form', methods = ['GET'])
+# def problem_4_results():
+    
+
+
 
 # You should feel free to be creative and do something fun for you --
 # And use this opportunity to make sure you understand these steps: if you think going slowly and carefully writing out steps for a simpler data transaction, like Problem 1, will help build your understanding, you should definitely try that!
