@@ -98,16 +98,12 @@ def problem_4():
 	x = """<!DOCTYPE html>
 <html>
 <body>
-<form action ="/problem4form" method = "POST">
+<form action ="/problem4form" method = "GET">
   <h2>Hello There!</h2>
   Please enter your name<br>
   <input type="text" name="name">
   <br>
-</form>
-</body>
-</html>
 <br>
-<form action="/problem4form" method="POST">
 	Where should you travel to next? Pick 1 city.<br>
   <input type="checkbox" name="city1" value="detroit"> City 1 <br>
   <input type="checkbox" name="city2" value="chicago"> City 2 <br>
@@ -116,25 +112,28 @@ def problem_4():
   <input type="checkbox" name="city5" value="seattle"> City 5 <br>
   <input type="checkbox" name="city6" value="austin"> City 6 <br>
   <input type="submit" value="Submit">
-</form>"""
-	# return x
+</form>
+</body>
+</html>"""
 
-# @app.route('/results', methods = ['GET', 'POST'])
-# def results():
-	if request.method == "POST":
+	# return x
+	if request.method == "GET":
+		name = str(request.args.get('name'))
+		print(name)
 		for city in request.args:
 			if city == 'city1':
-				return x + '<h1>Welcome to Detroit!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=detroit">'
+				return x + '<h1>Welcome to Detroit ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=detroit">' 
 			elif city == 'city2':
-				return x + '<h1>Welcome to Chicago!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=chicago">'
+				return x + '<h1>Welcome to Chicago ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=chicago">'
 			elif city == 'city3':
-				return x + '<h1>Welcome to San Francisco!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=san+francisco">'
+				return x + '<h1>Welcome to San Francisco ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=san+francisco">'
 			elif city == 'city4':
-				return x + '<h1>Welcome to New York!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=new+york">'
+				return x + '<h1>Welcome to New York ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=new+york">'
 			elif city == 'city5':
-				return x + '<h1>Welcome to Seattle!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=seattle">'
+				return x + '<h1>Welcome to Seattle ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=seattle">'
 			elif city == 'city6':
-				return x + '<h1>Welcome to Austin!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=austin">'
+				return x + '<h1>Welcome to Austin ' + name + '!</h1><img src="https://maps.googleapis.com/maps/api/staticmap?size=700x300&markers=austin">'
+	return x
     
 
 
